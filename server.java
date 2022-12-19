@@ -1,19 +1,20 @@
-
 import java.io.IOException;
 import java.io.OutputStream;
+
 import java.net.InetSocketAddress;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
 
-public class server { // Main class name should be Server
+public class Server { // Main class name should be Server
 
     public static void main(String[] args) throws Exception {
-        HttpServer server = HttpServer.create(new InetSocketAddress(8000), 0);
-        server.createContext("/test", new MyHandler());
-        server.setExecutor(null); // creates a default executor
-        server.start();
+        HttpServer Server = HttpServer.create(new InetSocketAddress(8000), 0);
+        Server.createContext("/", new MyHandler());
+        Server.createContext("/test", new MyHandler());
+        Server.setExecutor(null); // creates a default executor
+        Server.start();
     }
 
     static class MyHandler implements HttpHandler {
